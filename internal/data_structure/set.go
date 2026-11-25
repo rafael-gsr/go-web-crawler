@@ -3,6 +3,7 @@ package datastructure
 
 import (
 	"maps"
+	"slices"
 )
 
 type Set[T comparable] map[T]struct{}
@@ -45,15 +46,7 @@ func (s Set[T]) GetList() []T {
 
 func (s Set[T]) GetFirst() T {
 	keys := maps.Keys(s)
-	var firstValue T
-	counter := 1
-	keys(func(value T) bool {
-		if counter == 1 {
-			firstValue = value
-			counter--
-		}
-		return true
-	})
+	keySlice := slices.Collect(keys)
 
-	return firstValue
+	return keySlice[0]
 }
