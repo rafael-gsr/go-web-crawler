@@ -71,7 +71,7 @@ func (c *Crawler) findLinks(node *html.Node) (err error) {
 }
 
 func (c *Crawler) findEmails(node *html.Node) (err error) {
-	emailRegex, err := regexp.Compile("^[\\w\\-\\.]+@([\\w-]+\\.)+[\\w-]{2,}$")
+	emailRegex, err := regexp.Compile(`[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}`)
 	if err != nil {
 		return
 	}
